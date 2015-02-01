@@ -36,16 +36,18 @@ xcompmgr -n &
 # Note that you can run xrandr at the command line to get a list of your
 # connected screens and find out what names you should use to refer to them.
 
-# Activate primary screen 
-xrandr --output LVDS-1 --auto --primary
+# Activate primary screen
+xrandr --output eDP1 --mode 1920x1200 --primary
 
 # If we find that a screen is connected via VGA, activate it and position it
 # to the left of the primary screen.
-xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of LVDS-1
+xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of eDP1
 
 # If we find that a screen is connected via DVI, activate it and position it
 # to the left of the primary screen.
-xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
+xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of eDP1
+
+xrandr | grep 'HDMI2 connected' | ifne xrandr --output HDMI2 --auto --primary --right-of eDP1
 
 
 #
